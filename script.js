@@ -28,10 +28,9 @@ const randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)]
 const randomNumber = numbers[Math.floor(Math.random() * numbers.length)]
 const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)]
 
-
 let passwordLength = prompt("Select the length of your password between 8-128");
 
-while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) passwordLength = prompt("Password needs to be between 8 and 128 caracters");
+while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) passwordLength = prompt("Password needs to be between 8 and 128 caracters");
 console.log(passwordLength);
 
 let selectLowerCase = confirm("Do you want to include LOWER CASE caracters on your password?");
@@ -47,27 +46,20 @@ while (selectLowerCase !== true && selectUpperCase !== true && selectNumbers !==
   selectSymbols = confirm("Do you want to include SYMBOLS on your password?");
 }
 
-console.log(selectLowerCase)
-console.log(selectUpperCase)
-console.log(selectNumbers)
-console.log(selectSymbols)
-
-
-
-
-//if (selecLowerCase !== true && selecUpperCase !== true && selecNumbers !== true && selecSymbols !== true){
-//  alert("Please select at least one\nPlease refresh the page")
-//}
-  
-
-
 
 function generatePassword(){
-
+  let include = [];
+    if (selectLowerCase) include = include.concat(lowerCase);
+    if (selectUpperCase) include = include.concat(upperCase);
+    if (selectNumbers) include = include.concat(numbers);
+    if (selectSymbols) include = include.concat(symbols);
+   
+    
+    console.log(include)
+    
 }
 
-
-
+generatePassword()
 
 
 
